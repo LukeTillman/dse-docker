@@ -1,0 +1,3 @@
+# Local archives that are installed on the image
+*.tar.gz
+*.tar.gz.md5
