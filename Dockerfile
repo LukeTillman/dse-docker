@@ -18,10 +18,12 @@ RUN set -x \
     && gosu nobody true \
     && apt-get purge -y --auto-remove ca-certificates wget
 
-# Install JRE
+# Install JRE and Python prereqs
 RUN set -x \
     && apt-get update \
     && apt-get install -y openjdk-8-jre-headless \
+                          python \
+                          python-support \
     && rm -rf /var/lib/apt/lists/*
     
 # Get the version of DSE we're installing from the build argument

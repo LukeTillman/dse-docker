@@ -1,8 +1,5 @@
 #!/bin/bash
-set -ex
-
-echo "Starting DSE"
-echo "Path is $PATH"
+set -e
 
 # first arg is `-f` or `--some-option`
 if [ "${1:0:1}" = '-' ]; then
