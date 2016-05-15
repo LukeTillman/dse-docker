@@ -1,4 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "files.eol": "\n"
+  "files.eol": "\n",
+  "editor.insertSpaces": true
 }
