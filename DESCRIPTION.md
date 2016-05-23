@@ -2,6 +2,8 @@
 
 > **Note:** Not meant for production use. See http://www.datastax.com/wp-content/uploads/resources/DataStax-WP-Best_Practices_Running_DSE_Within_Docker.pdf for details on setting up DSE and Docker in production.
 
+The repository for this image is [available on GitHub](https://github.com/LukeTillman/dse-docker). Please use that to open issues.
+
 ## Starting DSE
 
 Start a DSE node in Cassandra mode:
