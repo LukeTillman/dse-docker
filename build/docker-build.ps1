@@ -13,4 +13,4 @@ Get-Content "$scriptPath\DSE_VERSION" |% {
     }
 }
 
-docker build --build-arg DSE_VERSION=$DSE_VERSION -t luketillman/datastax-enterprise:$DSE_VERSION -t luketillman/datastax-enterprise:latest .
+docker build --build-arg DSE_VERSION=$DSE_VERSION -t luketillman/datastax-enterprise:$DSE_VERSION .
