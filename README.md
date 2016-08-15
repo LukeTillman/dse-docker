@@ -1,5 +1,7 @@
 # DataStax Enterprise Docker
 
+[![Build Status](https://travis-ci.org/LukeTillman/dse-docker.svg?branch=master)](https://travis-ci.org/LukeTillman/dse-docker)
+
 > **Note:** Not meant for production use. See http://www.datastax.com/wp-content/uploads/resources/DataStax-WP-Best_Practices_Running_DSE_Within_Docker.pdf
 > for details on setting up DSE and Docker in production.
 
