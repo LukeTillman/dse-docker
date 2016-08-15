@@ -1,3 +1,6 @@
 # Local archives that are installed on the image
 *.tar.gz
 *.tar.gz.md5
+
+# Download credentials if any
+build/.netrc

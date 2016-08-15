@@ -3,6 +3,13 @@ sudo: required
 services:
 - docker
 
+# Decrypt credentials for download and copy to home
+before_install:
+- openssl aes-256-cbc -K $encrypted_70005b06143c_key -iv $encrypted_70005b06143c_iv
+  -in .netrc.enc -out build/.netrc -d
+- cp build/.netrc ~
+- chmod 600 .netrc
+
 # Download whatever version of DSE we're creating an image for
 install:
 - ./build/download.sh
