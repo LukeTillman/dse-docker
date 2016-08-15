@@ -1,0 +1,12 @@
+# Sudo required for doing docker build
+sudo: required
+services:
+- docker
+
+# Build the docker image
+script:
+- ./build/docker-build.sh
+
+# If successful, see if we need to publish also
+after_success:
+- ./build/travis-publish.sh
