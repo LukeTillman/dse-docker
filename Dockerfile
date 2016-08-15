@@ -54,6 +54,7 @@ VOLUME /opt/dse/resources
 
 # Entrypoint script for launching
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 # Cassandra ports (intra-node, TLS intra-node, JMX, CQL, Thrift)
