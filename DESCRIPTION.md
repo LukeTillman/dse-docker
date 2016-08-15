@@ -1,8 +1,8 @@
 # DataStax Enterprise on Docker
 
-> **Note:** Not meant for production use. See http://www.datastax.com/wp-content/uploads/resources/DataStax-WP-Best_Practices_Running_DSE_Within_Docker.pdf for details on setting up DSE and Docker in production.
+> **Note:** Not meant for production use. See [this whitepaper on DataStax.com][whitepaper] for details on setting up DSE and Docker in production.
 
-The repository for this image is [available on GitHub](https://github.com/LukeTillman/dse-docker). Please use that to open issues.
+The repository for this image is [available on GitHub][repo]. Please use that to open issues.
 
 ## Starting DSE
 
@@ -11,7 +11,7 @@ Start a DSE node in Cassandra mode:
 docker run --name some-dse -d luketillman/datastax-enterprise:tag
 ```
 
-The default command is to run `dse`, so the [usual flags](http://docs.datastax.com/en/datastax_enterprise/4.8/datastax_enterprise/startStop/refDseStandalone.html) are available as well. For example, to start a Search node just add the `-s` flag:
+The default command is to run `dse`, so the [usual flags][dse-start] are available as well. For example, to start a Search node just add the `-s` flag:
 ```
 docker run --name some-dse -d luketillman/datastax-enterprise:tag -s
 ```
@@ -60,3 +60,7 @@ You can view logs via Docker's container logs:
 ```
 docker logs some-dse
 ```
+
+[whitepaper]: http://www.datastax.com/wp-content/uploads/resources/DataStax-WP-Best_Practices_Running_DSE_Within_Docker.pdf
+[repo]: https://github.com/LukeTillman/dse-docker
+[dse-start]: http://docs.datastax.com/en/datastax_enterprise/4.8/datastax_enterprise/startStop/refDseStandalone.html
