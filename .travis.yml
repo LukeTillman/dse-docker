@@ -3,6 +3,10 @@ sudo: required
 services:
 - docker
 
+# Download whatever version of DSE we're creating an image for
+install:
+- ./build/download.sh
+
 # Build the docker image
 script:
 - ./build/docker-build.sh
