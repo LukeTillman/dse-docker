@@ -57,7 +57,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-# Cassandra ports (intra-node, TLS intra-node, JMX, CQL, Thrift, DSEFS intra-node, int-node messaging service)
+# Cassandra ports (intra-node, TLS intra-node, JMX, CQL, Thrift, DSEFS intra-node, intra-node messaging service)
 EXPOSE 5599 7000 7001 7199 8609 9042 9160
 
 # DSE Search (Solr)
