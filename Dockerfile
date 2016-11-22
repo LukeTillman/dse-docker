@@ -57,17 +57,29 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-# Cassandra ports (intra-node, TLS intra-node, JMX, CQL, Thrift)
-EXPOSE 7000 7001 7199 9042 9160
+# Cassandra ports (intra-node, TLS intra-node, JMX, CQL, Thrift, DSEFS intra-node, int-node messaging service)
+EXPOSE 5599 7000 7001 7199 8609 9042 9160
 
 # DSE Search (Solr)
 EXPOSE 8983 8984
 
 # DSE Analytics (Spark)
-EXPOSE 4040 7077 7080 7081
+EXPOSE 4040 7077 7080 7081 8090 9999 18080
 
 # BYOH
 EXPOSE 8012 9290 10000 50030 50060
+
+# DSE Graph
+EXPOSE 8182
+
+# DSEFS
+EXPOSE 5598
+
+# DSE Studio
+EXPOSE 9091
+
+# OpsCentre
+EXPOSE 8888
 
 # Run DSE in foreground by default
 CMD [ "dse", "cassandra", "-f" ]
