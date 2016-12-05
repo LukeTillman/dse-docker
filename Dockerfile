@@ -2,7 +2,7 @@ FROM debian:jessie-backports
 
 # Add DSE group and user
 RUN groupadd -r dse --gid=999 \
-    && useradd -r -g dse --uid=999 dse
+    && useradd -m -d /home/dse -r -g dse --uid=999 dse
 
 # gosu for easy step down from root
 ENV GOSU_VERSION 1.7
