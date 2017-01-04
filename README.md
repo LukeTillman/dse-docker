@@ -52,6 +52,20 @@ In the container, this will run `dse cassandra -s` to start a search node.
 You can also use combinations of those switches. For more examples, see the [Starting DSE][start-dse]
 documentation.
 
+### Exposing Ports on the Host
+
+Chances are you'll want to expose some ports on the host so that you can talk to DSE from 
+outside of Docker (for example, from code running on your local machine). You can do that using
+the `-p` switch when calling `docker run` and the most common port you'll probably want to
+expose is **9042** which is where CQL clients communicate. For example:
+
+```console
+docker run --name my-dse -d -p 9042:9042 luketillman/datastax-enterprise:TAG
+```
+
+This will expose the container's CQL client port (9042) on the host at port 9042. For a list of
+the ports used by DSE, see the [Configuring firewall port access][dse-ports] documentation.
+
 ### Starting Related Tools
 
 With a node running, use `docker exec` to run other tools. For example, the `nodetool status` 
@@ -129,3 +143,4 @@ Continuous integration builds are handled by Travis.
 [github-repo]: https://github.com/LukeTillman/dse-docker
 [docker-hub-tags]: https://hub.docker.com/r/luketillman/datastax-enterprise/tags/
 [start-dse]: http://docs.datastax.com/en/latest-dse/datastax_enterprise/admin/startDseStandalone.html
+[dse-ports]: http://docs.datastax.com/en/latest-dse/datastax_enterprise/sec/configFirewallPorts.html
