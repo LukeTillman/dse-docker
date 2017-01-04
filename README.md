@@ -104,8 +104,9 @@ file:
  - **`NUM_TOKENS:`**: The number of tokens randomly assigned to this node. Will leave the 
      default in the `cassandra.yaml` file if not set.
 
-The configuration files for DSE (under `$install_dir/resources` in the tarball) are also exposed 
-as a volume (see below).
+If you need more advanced control over the configuration, the configuration files are exposed
+as a volume (under `/opt/dse/resources`) which would allow you to mount a more customized
+configuration file from the host. See below for more information on volumes.
 
 ### Volumes
 
