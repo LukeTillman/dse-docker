@@ -72,13 +72,13 @@ With a node running, use `docker exec` to run other tools. For example, the `nod
 command:
 
 ```console
-docker exec -it some-dse nodetool status
+docker exec -it my-dse nodetool status
 ```
 
 Or to connect with `cqlsh`:
 
 ```console
-docker exec -it some-dse cqlsh
+docker exec -it my-dse cqlsh
 ```
 
 ### Environment Variables
@@ -123,7 +123,7 @@ The following volumes are created and can be mounted to the host system:
 You can view logs via Docker's container logs:
 
 ```console
-docker logs some-dse
+docker logs my-dse
 ```
 
 ## Builds
