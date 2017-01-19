@@ -24,18 +24,30 @@ RUN set -x \
     && apt-get install -y openjdk-8-jre-headless \
                           python \
                           python-support \
+                          curl \
     && rm -rf /var/lib/apt/lists/*
     
 # Get the version of DSE we're installing from the build argument
 ARG DSE_VERSION
 ENV DSE_VERSION ${DSE_VERSION}
 
-# Add DSE (we're assuming it's available in the same directory as this Dockerfile)
-# Hint: Use the download.sh script in the build directory to download a tarball
-ADD dse-${DSE_VERSION}-bin.tar.gz /opt
+# The URL where the DSE download credentials .netrc file is located
+ARG DSE_CREDENTIALS_URL
 
-# Link dse regardless of version to /opt/dse
-RUN ln -s /opt/dse* /opt/dse \
+# Download DSE by grabbing the .netrc credentials from the DSE_CREDENTIALS_URL, then unpack to
+# /opt, and create a link (regardless of DSE version) under /opt/dse, making sure to clean up
+# the credentials and other downloaded files
+RUN set -x \
+    && export DSE_TEMP="$(mktemp -d)" \
+    && cd "$DSE_TEMP" \
+    && curl -SLO "$DSE_CREDENTIALS_URL/.netrc" \
+    && curl --netrc-file .netrc -SLO "http://downloads.datastax.com/enterprise/dse-$DSE_VERSION-bin.tar.gz" \
+    && curl --netrc-file .netrc -SLO "http://downloads.datastax.com/enterprise/dse-$DSE_VERSION-bin.tar.gz.md5" \
+    && md5sum -c *.md5 \
+    && tar -xzf "dse-$DSE_VERSION-bin.tar.gz" -C /opt \
+    && cd / \
+    && rm -rf "$DSE_TEMP" \
+    && ln -s /opt/dse* /opt/dse \
     && chown -R dse:dse /opt/dse*
 
 # Append DSE binaries directory to the PATH so we can execute them from any working directory
