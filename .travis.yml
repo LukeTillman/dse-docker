@@ -5,6 +5,7 @@ services:
 
 # Decrypt credentials for download and copy to /srv/http folder
 before_install:
+- mkdir srv/http
 - openssl aes-256-cbc -K $encrypted_70005b06143c_key -iv $encrypted_70005b06143c_iv
   -in .netrc.enc -out srv/http/.netrc -d
 
