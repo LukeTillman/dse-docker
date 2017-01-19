@@ -10,7 +10,7 @@ before_script:
 - mkdir srv/http
 - openssl aes-256-cbc -K $encrypted_70005b06143c_key -iv $encrypted_70005b06143c_iv
   -in .netrc.enc -out srv/http/.netrc -d
-- ./srv/start-server.sh
+- export DSE_CREDENTIALS_URL=$(./srv/start-server.sh)
 
 # Build the docker image
 script:
