@@ -10,7 +10,8 @@ $wwwPath = Join-Path $scriptPath '.\http' -Resolve
 
 # Start busybox httpd to make any files in the http folder (e.g. download credentials)
 # available via HTTP
-docker run -d -p 8000:80 -v ${wwwPath}:/www --name build-static busybox httpd -f -h /www | Out-Null
+docker pull busybox:latest | Out-Null
+docker run -d -p 8000:80 -v ${wwwPath}:/www --name build-static busybox:latest httpd -f -h /www | Out-Null
 
 # Get the IP address where this will be reachable during a docker build and export it as the
 # environment variable that the build script expects

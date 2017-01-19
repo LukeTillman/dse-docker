@@ -13,8 +13,9 @@ popd > /dev/null
 
 # Start busybox httpd to make any files in the http folder (e.g. download credentials)
 # available via HTTP
-docker run -d -p 8000:80 -v $www_path:/www --name build-static busybox httpd -f -h /www > /dev/null
+docker pull busybox:latest > /dev/null
+docker run -d -p 8000:80 -v $www_path:/www --name build-static busybox:latest httpd -f -h /www > /dev/null
 
 # Get the IP address where this will be reachable during a docker build and write to stdout
-http_ip = $(docker exec build-static ip route | awk '/default/ { print $3 }')
+http_ip=$(docker exec build-static ip route | awk '/default/ { print $3 }')
 echo "http://$http_ip:8000"
