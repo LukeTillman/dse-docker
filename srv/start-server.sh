@@ -2,8 +2,8 @@
 
 set -e  # Bail if something fails
 
-# Starts httpd from busybox in Docker, serving up any files under the 'http'
-# directory relative to the script.
+# Starts httpd from busybox in Docker, serving up any files under the 'http' directory relative
+# to the script. Outputs a URL where the server is reachable.
 
 # Get the absolute path to this script and append 'http' subdirectory to get the absolute
 # path we want to serve
@@ -13,8 +13,8 @@ popd > /dev/null
 
 # Start busybox httpd to make any files in the http folder (e.g. download credentials)
 # available via HTTP
-docker run -d -p 8000:80 -v $www_path:/www --name build-static busybox httpd -f -h /www
+docker run -d -p 8000:80 -v $www_path:/www --name build-static busybox httpd -f -h /www > /dev/null
 
-# Get the IP address where this will be reachable during a docker build and export it as the
-# environment variable that the build script expects
-export DSE_CREDENTIALS_URL=$(docker exec build-static ip route | awk '/default/ { print $3 }')
+# Get the IP address where this will be reachable during a docker build and write to stdout
+http_ip = $(docker exec build-static ip route | awk '/default/ { print $3 }')
+echo "http://$http_ip:8000"
