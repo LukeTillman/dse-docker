@@ -3,16 +3,14 @@ sudo: required
 services:
 - docker
 
-# Decrypt credentials for download and copy to home
+# Decrypt credentials for download and copy to /srv/http folder
 before_install:
 - openssl aes-256-cbc -K $encrypted_70005b06143c_key -iv $encrypted_70005b06143c_iv
-  -in .netrc.enc -out build/.netrc -d
-- cp build/.netrc ~
-- chmod 600 ~/.netrc
+  -in .netrc.enc -out srv/http/.netrc -d
 
-# Download whatever version of DSE we're creating an image for
-install:
-- ./build/download.sh
+# Start a local http server in docker to make credentials available to build
+before_script:
+- ./srv/start-server.sh
 
 # Build the docker image
 script:
@@ -21,6 +19,10 @@ script:
 # If successful, see if we need to publish also
 after_success:
 - ./build/travis-publish.sh
+
+# Stop the local http server in docker
+after_script:
+- ./srv/stop-server.sh
 
 # Environment variables needed when publishing
 env:
