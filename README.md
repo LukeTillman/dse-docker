@@ -136,6 +136,13 @@ scripts are meant to be run from the root of the repository. For example:
 > ./build/docker-build.sh
 ```
 
+Because DSE requires credentials to download, the build requires some way to access those
+credentials without baking them into the final image and exposing them. Since Docker doesn't
+current support build-time secrets, I had to come up with a "creative" (read: hacky) workaround
+to grab those credentials via a local HTTP server during the build and then remove them after
+we've downloaded DSE. You can see [Issue 8][issue-8] and the files in the `srv` directory for 
+more details.
+
 Continuous integration builds are handled by Travis.
 
 
@@ -145,3 +152,4 @@ Continuous integration builds are handled by Travis.
 [docker-hub-tags]: https://hub.docker.com/r/luketillman/datastax-enterprise/tags/
 [start-dse]: http://docs.datastax.com/en/latest-dse/datastax_enterprise/admin/startDseStandalone.html
 [dse-ports]: http://docs.datastax.com/en/latest-dse/datastax_enterprise/sec/configFirewallPorts.html
+[issue-8]: https://github.com/LukeTillman/dse-docker/issues/8
