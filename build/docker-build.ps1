@@ -22,3 +22,6 @@ Get-Content "$scriptPath\DSE_VERSION" |% {
 
 # Build the image
 docker build --build-arg DSE_VERSION=$DSE_VERSION --build-arg DSE_CREDENTIALS_URL=$Env:DSE_CREDENTIALS_URL -t luketillman/datastax-enterprise:$DSE_VERSION .
+
+# Output some image information after the build is finished
+docker images luketillman/datastax-enterprise
