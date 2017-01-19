@@ -1,16 +1,15 @@
+language: generic
+
 # Sudo required for doing docker build
 sudo: required
 services:
 - docker
 
-# Decrypt credentials for download and copy to /srv/http folder
-before_install:
+# Start a local http server in docker to make credentials available to build
+before_script:
 - mkdir srv/http
 - openssl aes-256-cbc -K $encrypted_70005b06143c_key -iv $encrypted_70005b06143c_iv
   -in .netrc.enc -out srv/http/.netrc -d
-
-# Start a local http server in docker to make credentials available to build
-before_script:
 - ./srv/start-server.sh
 
 # Build the docker image
