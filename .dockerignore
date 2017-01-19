@@ -1,4 +1,5 @@
 build/
+srv/
 .vscode/
 *.md
 LICENSE

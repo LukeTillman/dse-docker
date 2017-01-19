@@ -3,4 +3,4 @@
 *.tar.gz.md5
 
 # Download credentials if any
-build/.netrc
+srv/http/
