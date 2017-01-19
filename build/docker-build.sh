@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e  # Bail if something fails
+
 # Make sure we have the DSE_CREDENTIALS_URL available
 if [[ -z "$DOCKER_USER" ]]; then
   echo 'The DSE_CREDENTIALS_URL environment variable must be set before building'
