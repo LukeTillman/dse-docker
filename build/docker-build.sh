@@ -3,7 +3,7 @@
 set -e  # Bail if something fails
 
 # Make sure we have the DSE_CREDENTIALS_URL available
-if [[ -z "$DOCKER_USER" ]]; then
+if [[ -z "$DSE_CREDENTIALS_URL" ]]; then
   echo 'The DSE_CREDENTIALS_URL environment variable must be set before building'
   exit 1
 fi
