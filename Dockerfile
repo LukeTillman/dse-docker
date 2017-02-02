@@ -66,6 +66,7 @@ VOLUME /opt/dse/resources
 
 # Entrypoint script for launching
 COPY entrypoint.sh /entrypoint.sh
+COPY healthcheck.sh /healthcheck.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
@@ -90,6 +91,8 @@ EXPOSE 5598 5599
 # Ports purposefully not exposed by default:
 #   9091 for DS Studio because it's not part of this image
 #   8888 for OpsCenter because it's not part of this image
+
+HEALTHCHECK --retries=6 --interval=50s --timeout=10s CMD ./healthcheck.sh
 
 # Run DSE in foreground by default
 CMD [ "dse", "cassandra", "-f" ]
