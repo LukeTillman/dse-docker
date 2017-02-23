@@ -22,6 +22,7 @@ RUN set -x \
 RUN set -x \
     && apt-get update \
     && apt-get install -y openjdk-8-jre-headless \
+                          ca-certificates-java \
                           python \
                           python-support \
     && rm -rf /var/lib/apt/lists/*
