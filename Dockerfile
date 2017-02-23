@@ -21,10 +21,11 @@ RUN set -x \
 # Install JRE and Python prereqs
 RUN set -x \
     && apt-get update \
-    && apt-get install -y openjdk-8-jre-headless \
-                          python \
-                          python-support \
-                          curl \
+    && apt-get -t jessie-backports install -y openjdk-8-jre-headless \
+                                              ca-certificates-java \
+                                              python \
+                                              python-support \
+                                              curl \
     && rm -rf /var/lib/apt/lists/*
     
 # Get the version of DSE we're installing from the build argument
