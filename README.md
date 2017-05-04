@@ -64,7 +64,7 @@ docker run --name my-dse -d -p 9042:9042 luketillman/datastax-enterprise:TAG
 ```
 
 This will expose the container's CQL client port (9042) on the host at port 9042. For a list of
-the ports used by DSE, see the [Configuring firewall port access][dse-ports] documentation.
+the ports used by DSE, see the [Securing DataStax Enterprise ports][dse-ports] documentation.
 
 ### Starting Related Tools
 
@@ -150,6 +150,6 @@ Continuous integration builds are handled by Travis.
 [whitepaper]: http://www.datastax.com/wp-content/uploads/resources/DataStax-WP-Best_Practices_Running_DSE_Within_Docker.pdf
 [github-repo]: https://github.com/LukeTillman/dse-docker
 [docker-hub-tags]: https://hub.docker.com/r/luketillman/datastax-enterprise/tags/
-[start-dse]: http://docs.datastax.com/en/latest-dse/datastax_enterprise/admin/startDseStandalone.html
-[dse-ports]: http://docs.datastax.com/en/latest-dse/datastax_enterprise/sec/configFirewallPorts.html
+[start-dse]: http://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/operations/startStop/startDseStandalone.html
+[dse-ports]: http://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/security/secFirewallPorts.html
 [issue-8]: https://github.com/LukeTillman/dse-docker/issues/8
