@@ -41,7 +41,7 @@ if [ "$1" = 'dse' -a "$2" = 'cassandra' ]; then
   
   # Replace the default seeds setting in cassandra.yaml (this will only execute the first time we run when the
   # setting in cassandra.yaml is still set to 127.0.0.1)
-  sed -ri 's/(- seeds:) "127.0.0.1"/\1 "'"$SEEDS"'"/' /opt/dse/resources/cassandra/conf/cassandra.yaml
+  sed -ri 's/(- seeds:).*/\1 "'"$SEEDS"'"/' /opt/dse/resources/cassandra/conf/cassandra.yaml
 
   # Update the following settings in the cassandra.yaml file based on the ENV variable values
   for yaml in \
