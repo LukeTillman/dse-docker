@@ -114,6 +114,7 @@ The following volumes are created and can be mounted to the host system:
 
 - **`/var/lib/cassandra`**: Data from Cassandra
 - **`/var/lib/spark`**: Data from DSE Analytics w/ Spark
+- **`/var/lib/dsefs`**: Data from DSEFS
 - **`/var/log/cassandra`**: Logs from Cassandra
 - **`/var/log/spark`**: Logs from Spark
 - **`/opt/dse/resources`**: Most configuration files including `cassandra.yaml`, `dse.yaml`, and
