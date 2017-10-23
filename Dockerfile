@@ -55,9 +55,14 @@ RUN set -x \
 ENV PATH /opt/dse/bin:$PATH
 
 # Create directories for Cassandra and Spark data
-RUN mkdir -p /var/lib/cassandra /var/lib/spark /var/lib/dsefs /var/log/cassandra /var/log/spark \
-    && chown -R dse:dse /var/lib/cassandra /var/lib/spark /var/lib/dsefs /var/log/cassandra /var/log/spark \
-    && chmod 777 /var/lib/cassandra /var/lib/spark /var/lib/dsefs /var/log/cassandra /var/log/spark
+RUN mkdir -p /var/lib/cassandra /var/lib/spark /var/lib/spark/worker /var/lib/spark/rdd /var/lib/dsefs \
+    && chown -R dse:dse /var/lib/cassandra /var/lib/spark /var/lib/dsefs \
+    && chmod 777 /var/lib/cassandra /var/lib/spark /var/lib/dsefs
+
+# Create log directories
+RUN mkdir -p /var/log/cassandra /var/log/spark \
+    && chown -R dse:dse /var/log/cassandra /var/log/spark \
+    && chmod 777 /var/log/cassandra /var/log/spark
 
 # Volumes for Cassandra and Spark data
 VOLUME /var/lib/cassandra /var/lib/spark /var/lib/dsefs /var/log/cassandra /var/log/spark
