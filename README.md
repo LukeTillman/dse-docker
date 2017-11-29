@@ -1,3 +1,15 @@
+# Archived: Use DataStax official Docker images
+
+DataStax has started offering [official Docker images][datastax-docker] for development environments, which is great news! I 
+was fortunate to be involved in the planning and creation of those images, so if you were using this image before, transitioning
+to the new official images should involve minimal or no changes. This repository is now archived and not actively maintained. I
+encourage you to check out the new [official Docker images][datastax-docker] and open issues/PRs there to help us improve them.
+
+Thanks to everyone who helped make this image better by opening issues and PRs. And thanks to everyone who used this image which
+ultimately played a small role in encouraging DataStax to release official images of their own.
+
+---
+
 # DataStax Enterprise Docker
 
 [![Build Status](https://travis-ci.org/LukeTillman/dse-docker.svg?branch=master)](https://travis-ci.org/LukeTillman/dse-docker)
@@ -146,7 +158,7 @@ more details.
 
 Continuous integration builds are handled by Travis.
 
-
+[datastax-docker]: https://github.com/datastax/docker-images
 [datastax-enterprise]: http://www.datastax.com/products/datastax-enterprise
 [whitepaper]: http://www.datastax.com/wp-content/uploads/resources/DataStax-WP-Best_Practices_Running_DSE_Within_Docker.pdf
 [github-repo]: https://github.com/LukeTillman/dse-docker
